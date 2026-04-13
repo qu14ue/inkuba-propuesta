@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Inkuba × theDynamo</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ee;
+    --cream: #ede9e3;
+    --accent: #c8a96e;
+    --accent-dark: #a07840;
+    --text: #1a1a1a;
+    --muted: #6b6560;
+    --border: #d4cfc8;
+    --success: #2d6a4f;
+    --danger: #9b2226;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.83) 50%, rgba(10,10,10,0.97) 100%),
+      url('cover2.png') center center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 12.5%;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: none;
+    pointer-events: none;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .logo-dynamo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .cover-date {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .cover-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 40px;
+  }
+
+  .cover-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cover-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .cover-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(52px, 8vw, 90px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .cover-title span {
+    color: var(--accent);
+  }
+
+  .cover-subtitle {
+    font-family: 'Syne', sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 3vw, 28px);
+    color: rgba(245,242,238,0.5);
+    margin-top: 16px;
+    max-width: 600px;
+    line-height: 1.4;
+  }
+
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+  }
+
+  .cover-for {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .cover-for strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 4px;
+  }
+
+  .cover-by {
+    text-align: right;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .cover-by strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 4px;
+  }
+
+  /* ─── INDEX ─── */
+  .index-page {
+    min-height: 100vh;
+    padding: 80px 12.5%;
+    background: var(--cream);
+    page-break-after: always;
+  }
+
+  .index-header {
+    margin-bottom: 60px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .page-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+
+  .index-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .index-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .index-item:nth-child(odd) {
+    padding-right: 40px;
+    border-right: 1px solid var(--border);
+  }
+
+  .index-item:nth-child(even) {
+    padding-left: 40px;
+  }
+
+  .index-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--accent);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+
+  .index-text strong {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--black);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .index-text span {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 80px 12.5%;
+    page-break-after: always;
+  }
+
+  .section:nth-child(odd) {
+    background: var(--white);
+  }
+
+  .section:nth-child(even) {
+    background: var(--cream);
+  }
+
+  .section-dark {
+    background: #111110 !important;
+    color: var(--white);
+  }
+
+  .section-medium {
+    background: #1c1a18 !important;
+    color: var(--white);
+  }
+
+  .section-medium .page-title { color: var(--white); }
+  .section-medium .section-label { color: var(--accent); }
+  .section-medium p { color: rgba(245,242,238,0.85); }
+  .section-medium .sol-content h4 { color: var(--white); }
+  .section-medium .sol-content p { color: rgba(245,242,238,0.65); }
+  .section-medium .sol-num { background: rgba(200,169,110,0.15); }
+  .section-medium .solution-flow { border-color: rgba(255,255,255,0.1); }
+  .section-medium .sol-num,
+  .section-medium .sol-content,
+  .section-medium .sol-tag { border-color: rgba(255,255,255,0.08); }
+  .section-medium .highlight-box { background: rgba(200,169,110,0.08); border-color: rgba(200,169,110,0.2); border-left-color: var(--accent); }
+  .section-medium .highlight-box p { color: rgba(245,242,238,0.85); }
+
+  .section-dark .page-title { color: var(--white); }
+  .section-dark .section-label { color: var(--accent); }
+  .section-dark p { color: rgba(245,242,238,0.8); }
+
+  .section-header {
+    margin-bottom: 48px;
+    max-width: 700px;
+  }
+
+  p {
+    color: var(--text);
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* ─── CARDS ─── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 28px;
+  }
+
+  .section-dark .card {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  .card-icon {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--black);
+  }
+
+  .section-dark .card h3 { color: var(--white); }
+
+  .card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .section-dark .card p { color: rgba(245,242,238,0.6); }
+
+  /* ─── PROBLEM ─── */
+  .problem-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+    border: 1px solid var(--border);
+  }
+
+  .problem-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .problem-item:last-child { border-bottom: none; }
+
+  .problem-num {
+    background: var(--black);
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    border-right: 1px solid var(--border);
+  }
+
+  .problem-content {
+    padding: 24px 28px;
+  }
+
+  .problem-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--black);
+  }
+
+  .problem-content p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ─── BLACK BOX ─── */
+  .blackbox {
+    background: var(--black);
+    border-radius: 2px;
+    padding: 48px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blackbox::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(200,169,110,0.1) 0%, transparent 70%);
+  }
+
+  .flow-steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 32px 0;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .flow-step-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: rgba(245,242,238,0.8);
+    width: 100%;
+    font-weight: 500;
+  }
+
+  .flow-step-box.highlight {
+    background: rgba(200,169,110,0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .flow-step-box.dead {
+    background: rgba(155,34,38,0.2);
+    border-color: rgba(155,34,38,0.5);
+    color: #e07070;
+  }
+
+  .flow-arrow {
+    color: rgba(255,255,255,0.3);
+    font-size: 18px;
+    padding: 0 8px;
+    flex: 0;
+  }
+
+  .flow-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .blackbox-insight {
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.3);
+    border-radius: 2px;
+    padding: 20px 24px;
+    margin-top: 24px;
+  }
+
+  .blackbox-insight p {
+    color: rgba(245,242,238,0.85);
+    font-size: 14px;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .blackbox-insight strong {
+    color: var(--accent);
+  }
+
+  /* ─── RENTABILIDAD ─── */
+  .roi-simple {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 48px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .roi-big {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 80px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .roi-label {
+    font-size: 18px;
+    color: rgba(245,242,238,0.7);
+    line-height: 1.4;
+  }
+
+  .roi-detail {
+    border-left: 1px solid rgba(255,255,255,0.1);
+    padding-left: 48px;
+  }
+
+  .roi-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+    color: rgba(245,242,238,0.7);
+  }
+
+  .roi-line:last-child { border-bottom: none; }
+  .roi-line strong { color: var(--white); font-weight: 500; }
+  .roi-line .amount { color: var(--accent); font-family: 'Syne', sans-serif; font-weight: 700; }
+
+  .scenarios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .scenario {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .scenario-header {
+    padding: 16px 20px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .scenario.optimista .scenario-header { background: var(--black); }
+  .scenario.optimista .scenario-title { color: var(--accent); }
+  .scenario.optimista .scenario-tag { color: rgba(245,242,238,0.5); }
+
+  .scenario-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--black);
+    text-transform: capitalize;
+  }
+
+  .scenario-tag {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .scenario-body {
+    padding: 20px;
+  }
+
+  .scenario-metric {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .scenario-metric:last-child { border-bottom: none; }
+  .scenario-metric strong { color: var(--text); font-weight: 500; }
+
+  .scenario-roas {
+    text-align: center;
+    padding: 16px;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+
+  .scenario.optimista .scenario-roas { background: rgba(200,169,110,0.15); border-color: rgba(200,169,110,0.3); }
+
+  .roas-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--black);
+  }
+
+
+  .roas-label { font-size: 12px; color: var(--muted); }
+
+  /* ─── SOLUTION FLOW ─── */
+  .solution-flow {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    border: 1px solid var(--border);
+  }
+
+  .sol-step {
+    display: contents;
+  }
+
+  .sol-num,
+  .sol-content,
+  .sol-tag {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sol-step:last-child > .sol-num,
+  .sol-step:last-child > .sol-content,
+  .sol-step:last-child > .sol-tag {
+    border-bottom: none;
+  }
+
+  .sol-num {
+    background: var(--black);
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .sol-content {
+    padding: 20px 24px;
+  }
+
+  .sol-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+
+  .sol-content p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .sol-tag {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-left: 1px solid var(--border);
+  }
+
+  .sol-badge {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .badge-auto { background: rgba(45,106,79,0.12); color: var(--success); }
+  .badge-armelio { background: rgba(200,169,110,0.15); color: var(--accent-dark); }
+  .badge-meta { background: rgba(24,119,242,0.1); color: #1877f2; }
+
+  /* ─── STACK ─── */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .stack-item {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 28px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .stack-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .stack-role {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,242,238,0.4);
+    margin-bottom: 16px;
+  }
+
+  .stack-desc {
+    font-size: 14px;
+    color: rgba(245,242,238,0.7);
+    margin: 0 !important;
+  }
+
+  .stack-cost {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: rgba(200,169,110,0.12);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* ─── PLANS ─── */
+  .plans {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .plan {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .plan.featured {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .plan-header {
+    padding: 28px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .plan.featured .plan-header {
+    background: var(--black);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+
+  .plan-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .plan.featured .plan-tag { color: var(--accent); }
+
+  .plan-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+
+  .plan.featured .plan-name { color: var(--white); }
+
+  .plan-desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .plan.featured .plan-desc { color: rgba(245,242,238,0.6); }
+
+  .plan-body {
+    padding: 28px;
+  }
+
+  .plan-includes {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .plan-includes li {
+    font-size: 14px;
+    color: var(--text);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .plan-includes li:last-child { border-bottom: none; }
+
+  .plan-includes li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .plan-pricing {
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.2);
+    border-radius: 2px;
+    padding: 20px;
+  }
+
+
+  .price-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--muted);
+    padding: 6px 0;
+  }
+
+  .price-row .val { color: var(--text); font-weight: 500; text-align: right; }
+  .price-row.total { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 12px; }
+  .price-row.total .val {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  /* ─── RESPONSIBILITIES ─── */
+  .resp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .resp-col {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .resp-header {
+    padding: 20px 24px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .resp-col.dark .resp-header {
+    background: #1c1a18;
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+
+  .resp-col.dark {
+    background: #1c1a18;
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .resp-emoji { font-size: 20px; }
+
+  .resp-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--black);
+  }
+
+  .resp-col.dark .resp-title { color: var(--white); }
+
+  .resp-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .resp-list li {
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .resp-col.dark .resp-list li { border-bottom-color: rgba(255,255,255,0.06); color: rgba(245,242,238,0.8); }
+  .resp-list li:last-child { border-bottom: none; }
+  .resp-list li::before { content: '→'; color: var(--accent); font-size: 12px; }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+  }
+
+  .timeline-item {
+    display: contents;
+  }
+
+  .timeline-month {
+    background: var(--black);
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  .timeline-content {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+
+  .timeline-tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .task-tag {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* ─── METRICS ─── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .metric-card {
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .metric-icon { font-size: 24px; margin-bottom: 12px; }
+  .metric-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+  .metric-desc { font-size: 13px; color: var(--muted); }
+
+  /* ─── ROADMAP ─── */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .roadmap-item {
+    padding: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+  }
+
+  .roadmap-icon { font-size: 20px; margin-bottom: 12px; }
+  .roadmap-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .roadmap-desc { font-size: 13px; color: rgba(245,242,238,0.5); }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    min-height: 60vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%);
+  }
+
+  .cta-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 5vw, 52px);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+
+  .cta-title span { color: var(--accent); }
+
+  .cta-sub {
+    font-size: 18px;
+    color: rgba(245,242,238,0.6);
+    max-width: 500px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .cta-items {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+
+  .cta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(245,242,238,0.7);
+  }
+
+  .cta-item::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cta-contact {
+    position: relative;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .cta-contact-item {
+    text-align: center;
+  }
+
+  .cta-contact-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,242,238,0.3);
+    margin-bottom: 6px;
+  }
+
+  .cta-contact-value {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--accent);
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .cover, .index-page, .section, .cta-section {
+      page-break-after: always;
+    }
+    body { font-size: 13px; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .cover { padding: 32px 20px; }
+    .cover-main { padding: 48px 0 32px; }
+    .cover-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .cover-by { text-align: left; }
+
+    .index-page { padding: 48px 20px; }
+    .index-grid { grid-template-columns: 1fr; }
+    .index-item:nth-child(odd) { padding-right: 0; border-right: none; }
+    .index-item:nth-child(even) { padding-left: 0; }
+
+    .section { padding: 48px 20px; }
+
+    .cards { grid-template-columns: 1fr; }
+
+    .problem-item { grid-template-columns: 40px 1fr; }
+
+    .blackbox { padding: 28px 20px; }
+    .flow-steps {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+    }
+    .flow-step { flex: none; }
+    .flow-arrow { transform: rotate(90deg); text-align: center; }
+
+    .roi-simple {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 28px 24px;
+    }
+    .roi-detail { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; }
+    .roi-big { font-size: 56px; }
+
+    .scenarios { grid-template-columns: 1fr; }
+
+    .solution-flow { border-radius: 0; display: flex; flex-direction: column; }
+    .sol-step { display: grid; grid-template-columns: 44px 1fr; border-bottom: 1px solid var(--border); }
+    .sol-step:last-child { border-bottom: none; }
+    .sol-num, .sol-content, .sol-tag { border-bottom: none; }
+    .sol-tag { display: none; }
+
+    .stack-grid { grid-template-columns: 1fr; }
+
+    .plans { grid-template-columns: 1fr; }
+
+    .resp-grid { grid-template-columns: 1fr; }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      border: none;
+    }
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-bottom: none;
+    }
+    .timeline-item:last-child { border-bottom: 1px solid var(--border); }
+    .timeline-month {
+      width: 100%;
+      padding: 16px 24px;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      white-space: normal;
+    }
+    .timeline-content { padding: 20px 20px; }
+
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+
+    .roadmap-grid { grid-template-columns: 1fr; }
+
+    .cta-section { padding: 60px 24px; }
+    .cta-contact { flex-direction: column; gap: 28px; }
+    .cta-items { flex-direction: column; gap: 16px; align-items: flex-start; }
+
+    .section-label { font-size: 10px; }
+
+    .index-header { margin-bottom: 36px; }
+
+    .resp-list li { padding: 12px 16px; font-size: 13px; }
+    .resp-header { padding: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .cover { padding: 24px 20px; }
+    .section { padding: 40px 20px; }
+    .index-page { padding: 40px 20px; }
+    .cta-section { padding: 48px 20px; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .blackbox { padding: 24px 16px; }
+    .roi-simple { padding: 24px 20px; }
+    .plan-body { padding: 20px; }
+    .plan-header { padding: 20px; }
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 24px 0;
+  }
+
+  .highlight-box {
+    background: rgba(200,169,110,0.08);
+    border: 1px solid rgba(200,169,110,0.25);
+    border-left: 3px solid var(--accent);
+    border-radius: 2px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .highlight-box p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .section-dark .highlight-box p { color: rgba(245,242,238,0.85); }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     PORTADA
+══════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="logo-dynamo">theDynamo</div>
+    <div class="cover-date">Abril 2026</div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-tag">Propuesta de Servicios</div>
+    <div class="cover-title">Llenar<br>la <span>agenda.</span></div>
+    <div class="cover-subtitle">Growth marketing basado en datos para hacer crecer Inkuba Tattoo & Art Studio</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-for">
+      Preparado para
+      <strong>Inkuba Tattoo & Art Studio</strong>
+    </div>
+    <div class="cover-by">
+      Por
+      <strong>theDynamo</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ÍNDICE
+══════════════════════════════════════ -->
+<div class="index-page">
+  <div class="index-header">
+    <div class="section-label">Contenido</div>
+    <h1 class="page-title">Índice</h1>
+  </div>
+
+  <div class="index-grid">
+    <div class="index-item">
+      <div class="index-num">01</div>
+      <div class="index-text">
+        <strong>Quiénes somos</strong>
+        <span>theDynamo — growth marketing basado en datos</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">02</div>
+      <div class="index-text">
+        <strong>Inkuba Tattoo & Art Studio</strong>
+        <span>El negocio, el equipo y el activo que ya tienen</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">03</div>
+      <div class="index-text">
+        <strong>El problema hoy</strong>
+        <span>Diagnóstico honesto en tres capas</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">04</div>
+      <div class="index-text">
+        <strong>La caja negra del WhatsApp</strong>
+        <span>Por qué Meta optimiza por curiosos y no por compradores</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">05</div>
+      <div class="index-text">
+        <strong>Análisis de rentabilidad</strong>
+        <span>Cuántos tatuajes necesita cerrar para que se pague solo</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">06</div>
+      <div class="index-text">
+        <strong>La solución</strong>
+        <span>Cerrar el loop entre inversión y resultados reales</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">07</div>
+      <div class="index-text">
+        <strong>El stack tecnológico</strong>
+        <span>Las herramientas y por qué las elegimos</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">08</div>
+      <div class="index-text">
+        <strong>Las opciones — Plan 1 y Plan 2</strong>
+        <span>Qué incluye cada plan y sus costos detallados</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">09</div>
+      <div class="index-text">
+        <strong>División de responsabilidades</strong>
+        <span>Qué hace Armelio, qué hacemos nosotros</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">10</div>
+      <div class="index-text">
+        <strong>Primeros 90 días</strong>
+        <span>El plan de acción mes a mes</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">11</div>
+      <div class="index-text">
+        <strong>Métricas que reportamos</strong>
+        <span>Solo lo que impacta en la caja</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">12</div>
+      <div class="index-text">
+        <strong>Hoja de ruta — Etapa 2</strong>
+        <span>Todo lo que podemos construir juntos</span>
+      </div>
+    </div>
+    <div class="index-item">
+      <div class="index-num">13</div>
+      <div class="index-text">
+        <strong>El próximo paso</strong>
+        <span>Qué necesitamos para arrancar</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     01 — QUIÉNES SOMOS
+══════════════════════════════════════ -->
+<div class="section section-dark">
+  <div class="section-header">
+    <div class="section-label">01</div>
+    <h2 class="page-title">Quiénes<br>somos</h2>
+  </div>
+
+  <p>Somos <strong style="color:var(--accent)">theDynamo</strong>, un equipo de dos especialistas en growth marketing con foco en performance y datos. No somos una agencia que ejecuta campañas y te manda un reporte lleno de métricas de vanidad al fin de mes.</p>
+
+  <p>Somos el equipo que primero entiende tu negocio — cuánto ganás por cliente, cuánto podés invertir, cuántos turnos necesitás llenar y en cuánto tiempo. Calculamos el retorno antes de invertir un peso, y medimos cada resultado para optimizar en tiempo real.</p>
+
+  <div class="highlight-box">
+    <p>Nuestra diferencia es simple: <strong>sabemos que una inversión en marketing solo tiene sentido si el CPA (costo por cliente) es menor al ticket promedio</strong>. Y sabemos que un cliente que vuelve multiplica ese margen sin costo adicional de adquisición.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Decisiones basadas en datos</h3>
+      <p>Cada decisión que tomamos — qué campaña escalar, qué audiencia pausar, qué mensaje cambiar — está respaldada por datos reales del negocio.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔁</div>
+      <h3>Loop cerrado de atribución</h3>
+      <p>Conectamos la inversión publicitaria con los resultados reales: turnos agendados, señas cobradas y trabajos completados.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Crecimiento escalonado</h3>
+      <p>Empezamos simple, medimos, y escalamos lo que funciona. Sin quemar presupuesto en hipótesis sin validar.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Socios, no proveedores</h3>
+      <p>Cuando te va bien a vos, nos va bien a nosotros. Trabajamos como si el negocio fuera nuestro.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     02 — INKUBA
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">02</div>
+    <h2 class="page-title">Inkuba<br>Tattoo & Art Studio</h2>
+  </div>
+
+  <p>Inkuba es un estudio privado de tatuajes ubicado en Rauch 3974, Almagro, CABA. Con un rating de 4.9 estrellas en Google sobre 41 reseñas y 5/5 en Facebook con 15 votos, el estudio tiene una reputación excepcional construida sobre trabajo real y clientes genuinamente satisfechos.</p>
+
+  <div class="divider"></div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <h3>Armelio — Senior & Propietario</h3>
+      <p>Especialista en realismo black & gray de nivel nacional. Perfil propio @armelio_tattoo con 5 estrellas en Google. Ha tatuado clientes de todo el país que viajan específicamente por su trabajo.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✏️</div>
+      <h3>Lyvan — Senior</h3>
+      <p>Tatuador senior con reseñas positivas propias. Orientado a estilos de media-alta complejidad. Agenda con capacidad disponible para nuevos clientes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🖊️</div>
+      <h3>Artista Junior</h3>
+      <p>Orientado a trabajos lineales y de baja complejidad. Capacidad para hasta 2 tatuajes por día. Ideal para capturar demanda de tickets de entrada.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗺️</div>
+      <h3>Estilos disponibles</h3>
+      <p>Realismo · Black & Gray · Lineal / Fine-line · Botánico · Maori · Blackwork. Un portfolio que cubre desde la consulta de entrada hasta la manga completa hiperrealista.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top: 32px;">
+    <p><strong>El activo más importante:</strong> Inkuba tiene una reputación de 4.9 estrellas, clientes que vienen de otras provincias y trabajos que hablan por sí solos en redes sociales. El problema no es la calidad — es que muy poca gente que podría ser cliente todavía no los conoce.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     03 — EL PROBLEMA HOY
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">03</div>
+    <h2 class="page-title">El problema<br>hoy</h2>
+  </div>
+
+  <p>Inkuba tiene todo lo necesario para crecer: talento, reputación y capacidad instalada. El problema es estructural: el canal de adquisición de clientes depende casi exclusivamente del alcance orgánico de Instagram, sin un sistema que permita escalar de manera predecible y medible.</p>
+
+  <div class="problem-list">
+    <div class="problem-item">
+      <div class="problem-num">01</div>
+      <div class="problem-content">
+        <h3>Visibilidad limitada al alcance orgánico</h3>
+        <p>Hoy los clientes llegan principalmente por Instagram orgánico y boca en boca. Una persona de redes boostea los posts con más alcance, pero sin una estrategia estructurada ni optimización basada en datos. El crecimiento depende del algoritmo, no de una decisión activa de ir a buscar clientes.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">02</div>
+      <div class="problem-content">
+        <h3>Capacidad instalada subutilizada</h3>
+        <p>El estudio tiene capacidad para hasta 75 sesiones mensuales entre los tres tatuadores. Hoy solo Armelio tiene agenda medianamente ocupada. Lyvan y el artista junior tienen capacidad ociosa significativa — talento disponible que no se está monetizando.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">03</div>
+      <div class="problem-content">
+        <h3>Atribución cero — no se sabe de dónde vienen los clientes</h3>
+        <p>No hay forma de saber qué acción de marketing trajo a cada cliente, cuánto costó conseguirlo ni cuál fue el retorno real de cada peso invertido. Las decisiones se toman a ciegas, sin datos.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">04</div>
+      <div class="problem-content">
+        <h3>Sin sistema de seguimiento post-sesión</h3>
+        <p>Una vez que el cliente se tatúa, no hay ninguna acción sistemática: no se le pide reseña en Google, no se lo contacta para una segunda sesión, no genera contenido para redes. Cada cliente termina siendo una transacción en lugar de una relación de largo plazo.</p>
+      </div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">05</div>
+      <div class="problem-content">
+        <h3>Sin presencia web independiente de redes sociales</h3>
+        <p>No hay sitio web propio. La presencia digital depende 100% de Instagram y el Google Business Profile. Si el algoritmo cambia o la cuenta tiene un problema, el canal de adquisición desaparece.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     04 — LA CAJA NEGRA
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">04</div>
+    <h2 class="page-title">La caja negra<br>del WhatsApp</h2>
+  </div>
+
+  <p>Este es el problema técnico central que hace que las campañas publicitarias en la industria de servicios sean tan ineficientes. Y es exactamente el problema que nosotros sabemos resolver.</p>
+
+  <div class="blackbox">
+    <p style="color: rgba(245,242,238,0.7); font-size: 14px; margin-bottom: 24px;">El flujo actual de un cliente potencial de Inkuba:</p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-box highlight">Ve el anuncio en Meta</div>
+        <div class="flow-label">Meta registra el clic</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-box">Abre WhatsApp</div>
+        <div class="flow-label">Inicia conversación</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-box dead">Zona sin datos</div>
+        <div class="flow-label">Meta pierde el rastro</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-box">Visita al estudio</div>
+        <div class="flow-label">Meta no lo sabe</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-box">Paga y se tatúa</div>
+        <div class="flow-label">Meta no lo sabe</div>
+      </div>
+    </div>
+
+    <div class="blackbox-insight">
+      <p>El resultado: <strong>Meta optimiza las campañas para encontrar más personas que inicien conversaciones</strong> — no más personas que paguen. El algoritmo aprende a buscar curiosos en lugar de compradores. El presupuesto se gasta en la audiencia equivocada y el CPA sube con el tiempo en lugar de bajar.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top: 28px;">
+    <p>La solución no es cambiar de plataforma ni de estrategia. Es <strong>cerrar el loop de información</strong>: hacer que Meta sepa quién terminó pagando para que aprenda a buscar más personas como esa. Eso es exactamente lo que construimos.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     05 — RENTABILIDAD
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">05</div>
+    <h2 class="page-title">Análisis de<br>rentabilidad</h2>
+  </div>
+
+  <p>Antes de hablar de costos, hablemos de números. La inversión en marketing solo tiene sentido si el retorno la supera con claridad. Acá van los cálculos concretos.</p>
+
+  <div class="roi-simple">
+    <div>
+      <div class="roi-big">3</div>
+      <div class="roi-label">sesiones completas<br>cubren toda la inversión del mes</div>
+    </div>
+    <div class="roi-detail">
+      <div class="roi-line">
+        <span>Fee mensual theDynamo</span>
+        <span class="amount">USD 300</span>
+      </div>
+      <div class="roi-line">
+        <span>Pauta publicitaria (Plan 1)</span>
+        <span class="amount">USD 300</span>
+      </div>
+      <div class="roi-line">
+        <span>Kommo CRM</span>
+        <span class="amount">USD 25</span>
+      </div>
+      <div class="roi-line">
+        <span>Stape.io sGTM</span>
+        <span class="amount">USD 20</span>
+      </div>
+      <div class="roi-line">
+        <strong>Inversión total mensual</strong>
+        <span class="amount">USD 645</span>
+      </div>
+      <div class="roi-line">
+        <span>Valor de 3 sesiones (Armelio)</span>
+        <span class="amount">USD 750</span>
+      </div>
+      <div class="roi-line">
+        <strong>Ganancia neta sobre inversión</strong>
+        <span class="amount" style="color: #4ade80;">+ USD 105</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: 28px; color: var(--muted); font-size: 14px;">Un cliente que agenda una manga completa (4 sesiones × USD 250) genera USD 1.000 para Armelio — casi del doble de la inversión mensual total. Todo lo que viene después es ganancia pura.</p>
+
+  <div class="divider"></div>
+
+  <h3 style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 8px; color: var(--black);">Proyección a 3 meses</h3>
+  <p style="color: var(--muted); font-size: 14px; margin-bottom: 0;">Escenarios basados en benchmarks reales de la industria de servicios en Argentina.</p>
+
+  <div class="scenarios">
+    <div class="scenario conservador">
+      <div class="scenario-header">
+        <div class="scenario-title">Conservador</div>
+        <div class="scenario-tag">CPA ~USD 50 · Pixel en aprendizaje</div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-metric"><span>Pauta publicitaria (USD 300/mes)</span><strong>USD 900</strong></div>
+        <div class="scenario-metric"><span>Clientes nuevos/mes</span><strong>6</strong></div>
+        <div class="scenario-metric"><span>Sesiones en 3 meses</span><strong>18</strong></div>
+        <div class="scenario-metric"><span>Ingresos para Armelio</span><strong>USD 4.500</strong></div>
+        <div class="scenario-metric"><span>Inversión total 3 meses</span><strong>USD 1.935</strong></div>
+        <div class="scenario-metric"><span>Ganancia neta</span><strong style="color: var(--success)">USD 2.565</strong></div>
+      </div>
+      <div class="scenario-roas">
+        <div class="roas-num">2.4×</div>
+        <div class="roas-label">ROAS</div>
+      </div>
+    </div>
+
+    <div class="scenario moderado">
+      <div class="scenario-header">
+        <div class="scenario-title">Moderado</div>
+        <div class="scenario-tag">CPA ~USD 30 · Pixel con datos</div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-metric"><span>Pauta publicitaria (USD 300/mes)</span><strong>USD 900</strong></div>
+        <div class="scenario-metric"><span>Clientes nuevos/mes</span><strong>10</strong></div>
+        <div class="scenario-metric"><span>Sesiones en 3 meses</span><strong>35</strong></div>
+        <div class="scenario-metric"><span>Ingresos para Armelio</span><strong>USD 8.750</strong></div>
+        <div class="scenario-metric"><span>Inversión total 3 meses</span><strong>USD 1.935</strong></div>
+        <div class="scenario-metric"><span>Ganancia neta</span><strong style="color: var(--success)">USD 6.815</strong></div>
+      </div>
+      <div class="scenario-roas">
+        <div class="roas-num">4.7×</div>
+        <div class="roas-label">ROAS</div>
+      </div>
+    </div>
+
+    <div class="scenario optimista">
+      <div class="scenario-header">
+        <div class="scenario-title">Optimista</div>
+        <div class="scenario-tag">CPA ~USD 15 · Pixel maduro</div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-metric"><span>Pauta publicitaria (USD 300/mes)</span><strong>USD 900</strong></div>
+        <div class="scenario-metric"><span>Clientes nuevos/mes</span><strong>20</strong></div>
+        <div class="scenario-metric"><span>Sesiones en 3 meses</span><strong>65</strong></div>
+        <div class="scenario-metric"><span>Ingresos para Armelio</span><strong>USD 16.250</strong></div>
+        <div class="scenario-metric"><span>Inversión total 3 meses</span><strong>USD 1.935</strong></div>
+        <div class="scenario-metric"><span>Ganancia neta</span><strong style="color: var(--accent)">USD 14.315</strong></div>
+      </div>
+      <div class="scenario-roas">
+        <div class="roas-num">8.7×</div>
+        <div class="roas-label">ROAS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top: 28px;">
+    <p><strong>Nota importante:</strong> el escenario optimista no requiere 65 clientes nuevos. Requiere 20-25 clientes donde varios de ellos agendan trabajos multi-sesión. Un solo cliente de manga completa equivale a 4 sesiones. El high ticket es el multiplicador natural del negocio de Inkuba.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     06 — LA SOLUCIÓN
+══════════════════════════════════════ -->
+<div class="section section-medium">
+  <div class="section-header">
+    <div class="section-label">06</div>
+    <h2 class="page-title">La<br>solución</h2>
+  </div>
+
+  <p>Cerramos el loop entre la inversión publicitaria y los resultados reales. Meta deja de optimizar por conversaciones iniciadas y empieza a optimizar por personas que efectivamente pagan. El algoritmo aprende qué tipo de usuarios son compradores reales de Inkuba — y va a buscar más personas como ellas.</p>
+
+  <div class="solution-flow">
+    <div class="sol-step">
+      <div class="sol-num">1</div>
+      <div class="sol-content">
+        <h4>El cliente ve el anuncio y abre WhatsApp</h4>
+        <p>Meta registra el clic. Un bot de calificación en WhatsApp le da la bienvenida y le hace preguntas clave: qué tipo de tatuaje quiere, dónde en el cuerpo, imagen de referencia. Los datos se guardan automáticamente en el CRM como nuevo lead.</p>
+      </div>
+      <div class="sol-tag"><span class="sol-badge badge-auto">Automático</span></div>
+    </div>
+    <div class="sol-step">
+      <div class="sol-num">2</div>
+      <div class="sol-content">
+        <h4>Armelio ve el lead calificado en el CRM</h4>
+        <p>Recibe la conversación con todos los datos ya cargados: nombre, tipo de trabajo, referencia. Solo tiene que hablar con el cliente y avanzar en la venta. Sin carga manual de datos.</p>
+      </div>
+      <div class="sol-tag"><span class="sol-badge badge-armelio">Armelio</span></div>
+    </div>
+    <div class="sol-step">
+      <div class="sol-num">3</div>
+      <div class="sol-content">
+        <h4>Se agenda la visita al estudio</h4>
+        <p>Armelio cambia el status del lead a "Visita agendada" en el CRM. Automáticamente, el sistema envía esta información a Meta: "esta persona que vio el anuncio llegó a agendar una visita". Meta empieza a aprender.</p>
+      </div>
+      <div class="sol-tag"><span class="sol-badge badge-meta">Meta CAPI</span></div>
+    </div>
+    <div class="sol-step">
+      <div class="sol-num">4</div>
+      <div class="sol-content">
+        <h4>El cliente paga la seña</h4>
+        <p>Armelio cambia el status a "Seña cobrada" e ingresa el monto del trabajo. Meta recibe la señal de conversión con el valor real: "este usuario pagó USD X". El algoritmo empieza a optimizar por compradores de ese perfil.</p>
+      </div>
+      <div class="sol-tag"><span class="sol-badge badge-meta">Meta CAPI</span></div>
+    </div>
+    <div class="sol-step">
+      <div class="sol-num">5</div>
+      <div class="sol-content">
+        <h4>El trabajo se completa — Purchase registrado</h4>
+        <p>Status final: "Tatuaje completado". Meta recibe el evento de compra con el valor total. El bot envía automáticamente un mensaje al cliente pidiendo una reseña en Google. El loop se cierra.</p>
+      </div>
+      <div class="sol-tag"><span class="sol-badge badge-auto">Automático</span></div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top: 32px;">
+    <p>Con cada ciclo completo, Meta aprende mejor quiénes son los clientes reales de Inkuba. <strong>Las campañas se vuelven más eficientes con el tiempo: el CPA baja y el ROAS sube</strong>. Es un sistema que se optimiza solo mientras Armelio simplemente cambia statuses en el CRM.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     07 — STACK TECNOLÓGICO
+══════════════════════════════════════ -->
+<div class="section section-dark">
+  <div class="section-header">
+    <div class="section-label">07</div>
+    <h2 class="page-title">El stack<br>tecnológico</h2>
+  </div>
+
+  <p>Cada herramienta fue elegida por una razón específica. No usamos tecnología por moda — usamos lo que resuelve el problema de la forma más eficiente y económica posible.</p>
+
+  <div class="stack-grid">
+    <div class="stack-item">
+      <div class="stack-name">Kommo CRM</div>
+      <div class="stack-role">CRM conversacional · Bot · Pipeline</div>
+      <p class="stack-desc">CRM construido específicamente para negocios que venden por WhatsApp. Incluye bot de calificación sin código, pipeline visual de ventas, bandeja unificada de conversaciones y API de conversiones nativa para Meta. Todo en una sola plataforma, sin integraciones complejas.</p>
+      <span class="stack-cost">USD 25/mes — Plan Avanzado · 1 usuario</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">Stape.io + sGTM</div>
+      <div class="stack-role">Server-Side Tracking · Conversiones Offline</div>
+      <p class="stack-desc">Contenedor de Google Tag Manager server-side hosteado en Stape. Recibe los webhooks de Kommo cuando un lead cambia de etapa, consulta la API de Kommo para obtener datos del contacto, los hashea y los envía a Meta vía Conversions API. El puente entre el CRM y las campañas.</p>
+      <span class="stack-cost">USD 20/mes — Stape.io sGTM hosting</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">Meta Conversions API</div>
+      <div class="stack-role">Atribución · Optimización · Aprendizaje</div>
+      <p class="stack-desc">CAPI recibe los eventos de conversión desde el servidor — no desde el navegador. Los datos del cliente viajan hasheados (SHA-256) y Meta los usa para matchear el usuario que vio el anuncio con el que finalmente pagó. Optimiza por compradores reales, no por clics.</p>
+      <span class="stack-cost">Sin costo adicional · Incluido en Meta Ads</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">Meta Ads</div>
+      <div class="stack-role">Campañas de Venta · Click-to-WhatsApp</div>
+      <p class="stack-desc">Campañas Click-to-WhatsApp optimizadas por eventos de conversión reales (señas cobradas, trabajos completados). Con el tiempo, el algoritmo aprende el perfil exacto del cliente comprador de Inkuba y optimiza la entrega automáticamente.</p>
+      <span class="stack-cost">Pauta pagada por el cliente directamente a Meta</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">WhatsApp Flows</div>
+      <div class="stack-role">Bot de Calificación · Captura de Datos</div>
+      <p class="stack-desc">Formularios interactivos nativos dentro de WhatsApp. Cuando un cliente inicia una conversación, el bot le hace las preguntas clave: tipo de tatuaje, zona del cuerpo, imagen de referencia. Los datos van automáticamente al CRM. Armelio solo atiende leads pre-calificados.</p>
+      <span class="stack-cost">Incluido en Kommo Avanzado</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-name">Google Ads (Plan 2)</div>
+      <div class="stack-role">Search · Keywords de Nicho</div>
+      <p class="stack-desc">Campañas de búsqueda con keywords muy específicas del nicho: "tatuaje realismo Buenos Aires", "tatuador black and gray CABA", "manga completa tatuaje Argentina". Búsqueda activa de alta intención. Complementa a Meta capturando demanda existente.</p>
+      <span class="stack-cost">Pauta pagada por el cliente directamente a Google</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     08 — LOS PLANES
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">08</div>
+    <h2 class="page-title">Las opciones</h2>
+  </div>
+
+  <p>Dos planes con el mismo stack tecnológico base y la misma dedicación de nuestra parte. La diferencia está en la calidad de atribución y en la presencia digital de Inkuba fuera de las redes sociales.</p>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-header">
+        <div class="plan-tag">Plan 1 — Starter</div>
+        <div class="plan-name">Direct<br>to WhatsApp</div>
+        <div class="plan-desc">La entrada más directa al sistema de growth. Sin landing, sin fricciones.</div>
+      </div>
+      <div class="plan-body">
+        <ul class="plan-includes">
+          <li>Setup completo de Kommo CRM (pipeline, etapas, campos personalizados)</li>
+          <li>Bot de calificación con WhatsApp Flows</li>
+          <li>Configuración de Stape + sGTM + Meta CAPI server-side</li>
+          <li>Creación y setup de Meta Business Manager + Pixel</li>
+          <li>Campañas Click-to-WhatsApp en Meta Ads</li>
+          <li>Optimización continua de campañas (audiencias, creatividades, pujas)</li>
+          <li>Atribución de conversiones offline (Lead → Visita → Seña → Purchase)</li>
+          <li>Automatización de pedido de reseñas post-tatuaje</li>
+          <li>Reporte mensual de métricas reales</li>
+          <li>Soporte y consultoría continua</li>
+        </ul>
+        <div class="plan-pricing">
+          <div class="price-row"><span>Fee mensual theDynamo</span><span class="val">USD 300</span></div>
+          <div class="price-row"><span>Pauta Meta Ads</span><span class="val">USD 300</span></div>
+          <div class="price-row"><span>Kommo CRM</span><span class="val">USD 25</span></div>
+          <div class="price-row"><span>Stape.io sGTM</span><span class="val">USD 20</span></div>
+          <div class="price-row total"><span>Total inversión mes 1</span><span class="val">USD 645</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan featured">
+      <div class="plan-header">
+        <div class="plan-tag">Plan 2 — Growth ✦ Recomendado</div>
+        <div class="plan-name">Landing<br>+ WhatsApp</div>
+        <div class="plan-desc">Mayor atribución, mayor presencia digital y Google Ads para capturar demanda activa.</div>
+      </div>
+      <div class="plan-body">
+        <ul class="plan-includes">
+          <li>Todo lo del Plan 1, más:</li>
+          <li>Landing page profesional de Inkuba (portfolio, reseñas, galería, contacto)</li>
+          <li>Setup de dominio + hosting + Cloudflare</li>
+          <li>Pixel web + sGTM en landing para captura de fbclid antes del salto a WhatsApp</li>
+          <li>Atribución mejorada: match casi perfecto anuncio → comprador</li>
+          <li>Campañas en Google Ads Search con keywords de nicho específicas</li>
+          <li>Remarketing básico para usuarios que visitaron la landing</li>
+          <li>Coordinación de contenido orgánico con la estrategia de pauta</li>
+        </ul>
+        <div class="plan-pricing">
+          <div class="price-row"><span>Fee mensual theDynamo</span><span class="val">USD 300</span></div>
+          <div class="price-row"><span>Pauta Meta Ads</span><span class="val">USD 300</span></div>
+          <div class="price-row"><span>Kommo CRM</span><span class="val">USD 25</span></div>
+          <div class="price-row"><span>Stape.io sGTM</span><span class="val">USD 20</span></div>
+          <div class="price-row"><span>Pauta Google Ads (a definir)</span><span class="val">a definir</span></div>
+          <div class="price-row"><span>Setup landing (pago por única vez)</span><span class="val">USD 200</span></div>
+          <div class="price-row total"><span>Total inversión mes 1</span><span class="val">USD 845 </span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top: 28px;">
+    <p><strong>Contrato mínimo de 3 meses.</strong> El algoritmo de Meta necesita tiempo para aprender. Los primeros resultados concretos suelen verse entre el mes 1 y 2. La optimización real ocurre en el mes 3, cuando el pixel ya tiene suficientes datos de compradores reales para buscar perfiles similares.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     09 — RESPONSABILIDADES
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">09</div>
+    <h2 class="page-title">Quién hace<br>qué</h2>
+  </div>
+
+  <p>Uno de los mayores miedos al contratar marketing digital es no saber cuánto trabajo extra cae sobre el equipo del negocio. La respuesta honesta: para Armelio, el trabajo adicional es mínimo. Para nosotros, es nuestro trabajo completo.</p>
+
+  <div class="resp-grid">
+    <div class="resp-col">
+      <div class="resp-header">
+        <div class="resp-emoji">🎨</div>
+        <div class="resp-title">Armelio hace</div>
+      </div>
+      <ul class="resp-list">
+        <li>Responder leads calificados que llegan al WhatsApp</li>
+        <li>Cambiar el status del lead en Kommo cuando agenda visita</li>
+        <li>Cambiar el status cuando cobra la seña (con el monto)</li>
+        <li>Cambiar el status cuando el trabajo está completado</li>
+        <li>Tatuar con la calidad que ya tiene — eso es todo</li>
+      </ul>
+    </div>
+    <div class="resp-col dark">
+      <div class="resp-header">
+        <div class="resp-emoji">⚙️</div>
+        <div class="resp-title">theDynamo hace</div>
+      </div>
+      <ul class="resp-list">
+        <li>Setup completo de toda la infraestructura técnica</li>
+        <li>Creación, gestión y optimización de campañas</li>
+        <li>Configuración y mantenimiento del bot de calificación</li>
+        <li>Monitoreo diario de métricas y ajuste de pujas</li>
+        <li>Configuración del sistema de atribución CAPI</li>
+        <li>Reporte mensual con métricas reales del negocio</li>
+        <li>Coordinación estratégica con la persona de redes</li>
+        <li>Consultoría continua para escalar lo que funciona</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     10 — PRIMEROS 90 DÍAS
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">10</div>
+    <h2 class="page-title">Primeros<br>90 días</h2>
+  </div>
+
+  <p>Un plan claro para que Armelio sepa exactamente qué esperar y cuándo. Sin sorpresas, sin zonas grises.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-month">Mes 1<br><span style="font-size:11px; opacity:0.6">Setup &<br>Lanzamiento</span></div>
+      <div class="timeline-content">
+        <h4>Construimos la base y lanzamos las primeras campañas</h4>
+        <div class="timeline-tasks">
+          <span class="task-tag">Setup Kommo CRM</span>
+          <span class="task-tag">Bot de calificación WA</span>
+          <span class="task-tag">Meta Business Manager</span>
+          <span class="task-tag">Pixel + CAPI server-side</span>
+          <span class="task-tag">Primeras campañas Meta Ads</span>
+          <span class="task-tag">Landing page (Plan 2)</span>
+          <span class="task-tag">Capacitación Armelio en CRM</span>
+          <span class="task-tag">Primeros datos de leads</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-month">Mes 2<br><span style="font-size:11px; opacity:0.6">Optimización</span></div>
+      <div class="timeline-content">
+        <h4>Aprendemos con datos reales y optimizamos</h4>
+        <div class="timeline-tasks">
+          <span class="task-tag">Análisis de primeros leads</span>
+          <span class="task-tag">Optimización de audiencias</span>
+          <span class="task-tag">A/B test de creatividades</span>
+          <span class="task-tag">Ajuste de pujas por CPA</span>
+          <span class="task-tag">Primer reporte de resultados</span>
+          <span class="task-tag">Refinamiento del bot</span>
+          <span class="task-tag">Google Ads (Plan 2)</span>
+          <span class="task-tag">Primera revisión de fees</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-month">Mes 3<br><span style="font-size:11px; opacity:0.6">Escala</span></div>
+      <div class="timeline-content">
+        <h4>Escalamos lo que funciona y definimos el camino</h4>
+        <div class="timeline-tasks">
+          <span class="task-tag">Lookalike audiences de compradores</span>
+          <span class="task-tag">Escala de presupuesto</span>
+          <span class="task-tag">Campañas por artista</span>
+          <span class="task-tag">Reporte final de 90 días</span>
+          <span class="task-tag">Proyección de Etapa 2</span>
+          <span class="task-tag">Retargeting básico</span>
+          <span class="task-tag">Estrategia de contenido integrada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     11 — MÉTRICAS
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-label">11</div>
+    <h2 class="page-title">Métricas que<br>reportamos</h2>
+  </div>
+
+  <p>Cada mes recibís un reporte con los números que importan para el negocio. Sin métricas de vanidad, sin jerga técnica innecesaria. Solo lo que impacta en la caja de Inkuba.</p>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon">💬</div>
+      <div class="metric-name">Leads generados</div>
+      <div class="metric-desc">Cuántas conversaciones nuevas llegaron ese mes desde los anuncios</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">✅</div>
+      <div class="metric-name">Leads calificados</div>
+      <div class="metric-desc">Cuántos pasaron el bot y llegaron como oportunidad real a Armelio</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">📅</div>
+      <div class="metric-name">Turnos agendados</div>
+      <div class="metric-desc">Visitas al estudio concretadas desde leads de campañas</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">💵</div>
+      <div class="metric-name">Señas cobradas</div>
+      <div class="metric-desc">Clientes que confirmaron trabajo y pagaron seña</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">🎯</div>
+      <div class="metric-name">CPA real</div>
+      <div class="metric-desc">Costo real por cliente que efectivamente pagó — no por clic</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">📈</div>
+      <div class="metric-name">ROAS del mes</div>
+      <div class="metric-desc">Retorno real sobre la inversión publicitaria del período</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     12 — ROADMAP ETAPA 2
+══════════════════════════════════════ -->
+<div class="section section-dark">
+  <div class="section-header">
+    <div class="section-label">12</div>
+    <h2 class="page-title">Hoja de ruta<br>Etapa 2</h2>
+  </div>
+
+  <p>Una vez que el sistema base esté funcionando y tengamos datos reales del negocio, el potencial de crecimiento de Inkuba es muy grande. Estas son las iniciativas que podemos construir juntos en los próximos 6 a 12 meses.</p>
+
+  <div class="roadmap-grid">
+    <div class="roadmap-item">
+      <div class="roadmap-icon">🌐</div>
+      <div class="roadmap-title">Sitio web completo</div>
+      <div class="roadmap-desc">Web profesional con galería de trabajos, página por artista, blog, y SEO técnico.</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">✍️</div>
+      <div class="roadmap-title">Blog con una nota por trabajo</div>
+      <div class="roadmap-desc">Cada tatuaje grande se convierte en un artículo: proceso, técnica, significado. Contenido que rankea en Google.</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">🔍</div>
+      <div class="roadmap-title">SEO orgánico</div>
+      <div class="roadmap-desc">Posicionamiento en keywords como "tatuaje realismo Buenos Aires" para capturar demanda sin pagar por clic.</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">🔁</div>
+      <div class="roadmap-title">Retargeting avanzado</div>
+      <div class="roadmap-desc">Campañas específicas para usuarios que interactuaron pero no convirtieron. Segmentadas por intención.</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">📧</div>
+      <div class="roadmap-title">Email marketing</div>
+      <div class="roadmap-desc">Secuencias de fidelización para clientes existentes: cuidado del tatuaje, próxima sesión, novedades del estudio.</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">🎁</div>
+      <div class="roadmap-title">Programa de referidos</div>
+      <div class="roadmap-desc">Sistema de descuentos o beneficios para clientes que traen nuevos clientes al estudio.</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">🏆</div>
+      <div class="roadmap-title">Armelio como marca nacional</div>
+      <div class="roadmap-desc">Estrategia específica para posicionar @armelio_tattoo como el referente de realismo black & gray en Argentina.</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">🗺️</div>
+      <div class="roadmap-title">Expansión geográfica</div>
+      <div class="roadmap-desc">Campañas dirigidas a ciudades del interior sin tatuadores de este nivel. El mensaje: "vale la pena el viaje".</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-icon">📱</div>
+      <div class="roadmap-title">Contenido coordinado</div>
+      <div class="roadmap-desc">Sistema donde el orgánico informa a la pauta y viceversa. Lo que funciona en redes, se convierte en anuncio.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     13 — PRÓXIMO PASO
+══════════════════════════════════════ -->
+<div class="cta-section">
+  <div class="section-label" style="justify-content: center; margin-bottom: 24px;">13 — El próximo paso</div>
+  <div class="cta-title">¿Arrancamos<br><span>juntos?</span></div>
+  <div class="cta-sub">Para empezar necesitamos solo tres cosas de tu parte. El resto lo hacemos nosotros.</div>
+
+  <div class="cta-items">
+    <div class="cta-item">Acceso a WhatsApp Business del estudio</div>
+    <div class="cta-item">Acceso a Meta Business Manager</div>
+    <div class="cta-item">30 minutos de onboarding juntos</div>
+  </div>
+
+  <div class="cta-contact">
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Estudio</div>
+      <div class="cta-contact-value">theDynamo.studio</div>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Contrato mínimo</div>
+      <div class="cta-contact-value">3 meses</div>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Inicio de campañas</div>
+      <div class="cta-contact-value">72hs del arranque</div>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-label">Primer reporte</div>
+      <div class="cta-contact-value">Al cierre del mes 1</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
